@@ -12,12 +12,12 @@ namespace MetragemRio.ViewModels
 {
     public class MeterageViewModel : INotifyPropertyChanged
     {
-        private string _timestamp;
+        private Int32 _timestamp;
         /// <summary>
         /// Sample ViewModel property; this property is used to identify the object.
         /// </summary>
         /// <returns></returns>
-        public string Timestamp
+        public Int32 Timestamp
         {
             get
             {
@@ -33,12 +33,12 @@ namespace MetragemRio.ViewModels
             }
         }
 
-        private string _status;
+        private Int32 _status;
         /// <summary>
         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
         /// </summary>
         /// <returns></returns>
-        public string Status
+        public Int32 Status
         {
             get
             {
@@ -54,12 +54,12 @@ namespace MetragemRio.ViewModels
             }
         }
 
-        private string _level;
+        private Double _level;
         /// <summary>
         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
         /// </summary>
         /// <returns></returns>
-        public string Level
+        public Double Level
         {
             get
             {
@@ -75,12 +75,12 @@ namespace MetragemRio.ViewModels
             }
         }
 
-        private string _precipitation;
+        private Double _precipitation;
         /// <summary>
         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
         /// </summary>
         /// <returns></returns>
-        public string Precipitation
+        public Double Precipitation
         {
             get
             {
