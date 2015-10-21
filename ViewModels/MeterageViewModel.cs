@@ -10,88 +10,88 @@ using System.Windows.Media.Animation;
 
 namespace MetragemRio.ViewModels
 {
-    public class ItemViewModel : INotifyPropertyChanged
+    public class MeterageViewModel : INotifyPropertyChanged
     {
-        private string _id;
+        private string _timestamp;
         /// <summary>
         /// Sample ViewModel property; this property is used to identify the object.
         /// </summary>
         /// <returns></returns>
-        public string ID
+        public string Timestamp
         {
             get
             {
-                return _id;
+                return _timestamp;
             }
             set
             {
-                if (value != _id)
+                if (value != _timestamp)
                 {
-                    _id = value;
-                    NotifyPropertyChanged("ID");
+                    _timestamp = value;
+                    NotifyPropertyChanged("Timestamp");
                 }
             }
         }
 
-        private string _lineOne;
+        private string _status;
         /// <summary>
         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
         /// </summary>
         /// <returns></returns>
-        public string LineOne
+        public string Status
         {
             get
             {
-                return _lineOne;
+                return _status;
             }
             set
             {
-                if (value != _lineOne)
+                if (value != _status)
                 {
-                    _lineOne = value;
-                    NotifyPropertyChanged("LineOne");
+                    _status = value;
+                    NotifyPropertyChanged("Status");
                 }
             }
         }
 
-        private string _lineTwo;
+        private string _level;
         /// <summary>
         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
         /// </summary>
         /// <returns></returns>
-        public string LineTwo
+        public string Level
         {
             get
             {
-                return _lineTwo;
+                return _level;
             }
             set
             {
-                if (value != _lineTwo)
+                if (value != _level)
                 {
-                    _lineTwo = value;
-                    NotifyPropertyChanged("LineTwo");
+                    _level = value;
+                    NotifyPropertyChanged("Level");
                 }
             }
         }
 
-        private string _lineThree;
+        private string _precipitation;
         /// <summary>
         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
         /// </summary>
         /// <returns></returns>
-        public string LineThree
+        public string Precipitation
         {
             get
             {
-                return _lineThree;
+                return _precipitation;
             }
             set
             {
-                if (value != _lineThree)
+                if (value != _precipitation)
                 {
-                    _lineThree = value;
-                    NotifyPropertyChanged("LineThree");
+                    _precipitation = value;
+                    NotifyPropertyChanged("Precipitation");
                 }
             }
         }

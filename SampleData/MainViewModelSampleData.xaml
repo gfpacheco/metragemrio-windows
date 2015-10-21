@@ -5,12 +5,12 @@
     SampleProperty="Sample Text Property Value">
 
     <vm:MainViewModel.Items>
-        <vm:ItemViewModel ID="0" LineOne="design one" LineTwo="Maecenas praesent accumsan bibendum" LineThree="Maecenas praesent accumsan bibendum dictumst eleifend facilisi faucibus habitant inceptos interdum lobortis nascetur"/>
-        <vm:ItemViewModel ID="1" LineOne="design two" LineTwo="Dictumst eleifend facilisi faucibus" LineThree="Pharetra placerat pulvinar sagittis senectus sociosqu suscipit torquent ultrices vehicula volutpat maecenas praesent"/>
-        <vm:ItemViewModel ID="2" LineOne="design three" LineTwo="Habitant inceptos interdum lobortis" LineThree="Accumsan bibendum dictumst eleifend facilisi faucibus habitant inceptos interdum lobortis nascetur pharetra placerat"/>
-        <vm:ItemViewModel ID="3" LineOne="design four" LineTwo="Nascetur pharetra placerat pulvinar" LineThree="Pulvinar sagittis senectus sociosqu suscipit torquent ultrices vehicula volutpat maecenas praesent accumsan bibendum"/>
-        <vm:ItemViewModel ID="4" LineOne="design five" LineTwo="Sagittis senectus sociosqu suscipit" LineThree="Dictumst eleifend facilisi faucibus habitant inceptos interdum lobortis nascetur pharetra placerat pulvinar sagittis"/>
-        <vm:ItemViewModel ID="5" LineOne="design six" LineTwo="Torquent ultrices vehicula volutpat" LineThree="Senectus sociosqu suscipit torquent ultrices vehicula volutpat maecenas praesent accumsan bibendum dictumst eleifend"/>
+        <vm:MeterageViewModel Timestamp="0" Status="design one" Level="Maecenas praesent accumsan bibendum" Precipitation="Maecenas praesent accumsan bibendum dictumst eleifend facilisi faucibus habitant inceptos interdum lobortis nascetur"/>
+        <vm:MeterageViewModel Timestamp="1" Status="design two" Level="Dictumst eleifend facilisi faucibus" Precipitation="Pharetra placerat pulvinar sagittis senectus sociosqu suscipit torquent ultrices vehicula volutpat maecenas praesent"/>
+        <vm:MeterageViewModel Timestamp="2" Status="design three" Level="Habitant inceptos interdum lobortis" Precipitation="Accumsan bibendum dictumst eleifend facilisi faucibus habitant inceptos interdum lobortis nascetur pharetra placerat"/>
+        <vm:MeterageViewModel Timestamp="3" Status="design four" Level="Nascetur pharetra placerat pulvinar" Precipitation="Pulvinar sagittis senectus sociosqu suscipit torquent ultrices vehicula volutpat maecenas praesent accumsan bibendum"/>
+        <vm:MeterageViewModel Timestamp="4" Status="design five" Level="Sagittis senectus sociosqu suscipit" Precipitation="Dictumst eleifend facilisi faucibus habitant inceptos interdum lobortis nascetur pharetra placerat pulvinar sagittis"/>
+        <vm:MeterageViewModel Timestamp="5" Status="design six" Level="Torquent ultrices vehicula volutpat" Precipitation="Senectus sociosqu suscipit torquent ultrices vehicula volutpat maecenas praesent accumsan bibendum dictumst eleifend"/>
     </vm:MainViewModel.Items>
 
 </vm:MainViewModel>
