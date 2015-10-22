@@ -16,13 +16,13 @@ namespace MetragemRio.ViewModels
 
         public MainViewModel()
         {
-            this.Items = new ObservableCollection<MeterageViewModel>();
+            this.Meterages = new ObservableCollection<MeterageViewModel>();
         }
 
         /// <summary>
         /// A collection for ItemViewModel objects.
         /// </summary>
-        public ObservableCollection<MeterageViewModel> Items { get; private set; }
+        public ObservableCollection<MeterageViewModel> Meterages { get; private set; }
 
         public bool IsDataLoaded
         {
@@ -37,7 +37,7 @@ namespace MetragemRio.ViewModels
         {
             if (!IsDataLoaded)
             {
-                Items.Clear();
+                Meterages.Clear();
                 WebClient webClient = new WebClient();
                 webClient.Headers["Accept"] = "application/json";
                 webClient.DownloadStringCompleted += new DownloadStringCompletedEventHandler(webClient_DownloadCatalogCompleted);
@@ -47,21 +47,21 @@ namespace MetragemRio.ViewModels
 
         public MeterageViewModel getMeterageFromTimestamp(int timestamp)
         {
-            return Items.Single(ViewModels => ViewModels.Timestamp == timestamp);
+            return Meterages.Single(ViewModels => ViewModels.Timestamp == timestamp);
         }
 
         private void webClient_DownloadCatalogCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
             try
             {
-                this.Items.Clear();
+                this.Meterages.Clear();
                 if (e.Result != null)
                 {
                     var meterages = JsonConvert.DeserializeObject<Meterage[]>(e.Result);
                     int id = 0;
                     foreach (Meterage meterage in meterages)
                     {
-                        this.Items.Add(new MeterageViewModel()
+                        this.Meterages.Add(new MeterageViewModel()
                         {
                             Timestamp = meterage.timestamp,
                             Status = meterage.status,
