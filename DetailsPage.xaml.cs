@@ -27,11 +27,11 @@ namespace MetragemRio
         {
             if (DataContext == null)
             {
-                string selectedIndex = "";
-                if (NavigationContext.QueryString.TryGetValue("selectedItem", out selectedIndex))
+                string selectedTimestamp = "";
+                if (NavigationContext.QueryString.TryGetValue("selectedTimestamp", out selectedTimestamp))
                 {
-                    int index = int.Parse(selectedIndex);
-                    DataContext = App.ViewModel.Items[index];
+                    int timestamp = int.Parse(selectedTimestamp);
+                    DataContext = App.ViewModel.getMeterageFromTimestamp(timestamp);
                 }
             }
         }

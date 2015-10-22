@@ -43,7 +43,7 @@ namespace MetragemRio
                 return;
 
             // Navigate to the new page
-            NavigationService.Navigate(new Uri("/DetailsPage.xaml?selectedItem=" + (MainLongListSelector.SelectedItem as MeterageViewModel).Timestamp, UriKind.Relative));
+            NavigationService.Navigate(new Uri("/DetailsPage.xaml?selectedTimestamp=" + (MainLongListSelector.SelectedItem as MeterageViewModel).Timestamp, UriKind.Relative));
 
             // Reset selected item to null (no selection)
             MainLongListSelector.SelectedItem = null;

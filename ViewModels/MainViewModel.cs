@@ -6,6 +6,7 @@ using System.Net;
 using Newtonsoft.Json;
 using MetragemRio.Models;
 using System.Diagnostics;
+using System.Linq;
 
 namespace MetragemRio.ViewModels
 {
@@ -42,6 +43,11 @@ namespace MetragemRio.ViewModels
                 webClient.DownloadStringCompleted += new DownloadStringCompletedEventHandler(webClient_DownloadCatalogCompleted);
                 webClient.DownloadStringAsync(new Uri(apiUrl));
             }
+        }
+
+        public MeterageViewModel getMeterageFromTimestamp(int timestamp)
+        {
+            return Items.Single(ViewModels => ViewModels.Timestamp == timestamp);
         }
 
         private void webClient_DownloadCatalogCompleted(object sender, DownloadStringCompletedEventArgs e)
