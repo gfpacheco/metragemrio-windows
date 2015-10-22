@@ -2,11 +2,17 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using MetragemRio.Resources;
+using System.Net;
+using Newtonsoft.Json;
+using MetragemRio.Models;
+using System.Diagnostics;
 
 namespace MetragemRio.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {
+        const string apiUrl = @"http://159.203.79.42:5001/cities/7329/meterages";
+
         public MainViewModel()
         {
             this.Items = new ObservableCollection<MeterageViewModel>();
@@ -16,38 +22,6 @@ namespace MetragemRio.ViewModels
         /// A collection for ItemViewModel objects.
         /// </summary>
         public ObservableCollection<MeterageViewModel> Items { get; private set; }
-
-        private string _sampleProperty = "Sample Runtime Property Value";
-        /// <summary>
-        /// Sample ViewModel property; this property is used in the view to display its value using a Binding
-        /// </summary>
-        /// <returns></returns>
-        public string SampleProperty
-        {
-            get
-            {
-                return _sampleProperty;
-            }
-            set
-            {
-                if (value != _sampleProperty)
-                {
-                    _sampleProperty = value;
-                    NotifyPropertyChanged("SampleProperty");
-                }
-            }
-        }
-
-        /// <summary>
-        /// Sample property that returns a localized string
-        /// </summary>
-        public string LocalizedSampleProperty
-        {
-            get
-            {
-                return AppResources.SampleProperty;
-            }
-        }
 
         public bool IsDataLoaded
         {
@@ -60,25 +34,43 @@ namespace MetragemRio.ViewModels
         /// </summary>
         public void LoadData()
         {
-            // Sample data; replace with real data
-            this.Items.Add(new MeterageViewModel() { Timestamp = 0, Status = 1, Level = 7.32, Precipitation = 22 });
-            this.Items.Add(new MeterageViewModel() { Timestamp = 1, Status = 1, Level = 7.32, Precipitation = 22 });
-            this.Items.Add(new MeterageViewModel() { Timestamp = 2, Status = 1, Level = 7.32, Precipitation = 22 });
-            this.Items.Add(new MeterageViewModel() { Timestamp = 3, Status = 1, Level = 7.32, Precipitation = 22 });
-            this.Items.Add(new MeterageViewModel() { Timestamp = 4, Status = 1, Level = 7.32, Precipitation = 22 });
-            this.Items.Add(new MeterageViewModel() { Timestamp = 5, Status = 1, Level = 7.32, Precipitation = 22 });
-            this.Items.Add(new MeterageViewModel() { Timestamp = 6, Status = 1, Level = 7.32, Precipitation = 22 });
-            this.Items.Add(new MeterageViewModel() { Timestamp = 7, Status = 1, Level = 7.32, Precipitation = 22 });
-            this.Items.Add(new MeterageViewModel() { Timestamp = 8, Status = 1, Level = 7.32, Precipitation = 22 });
-            this.Items.Add(new MeterageViewModel() { Timestamp = 9, Status = 1, Level = 7.32, Precipitation = 22 });
-            this.Items.Add(new MeterageViewModel() { Timestamp = 10, Status = 1, Level = 7.32, Precipitation = 22 });
-            this.Items.Add(new MeterageViewModel() { Timestamp = 11, Status = 1, Level = 7.32, Precipitation = 22 });
-            this.Items.Add(new MeterageViewModel() { Timestamp = 12, Status = 1, Level = 7.32, Precipitation = 22 });
-            this.Items.Add(new MeterageViewModel() { Timestamp = 13, Status = 1, Level = 7.32, Precipitation = 22 });
-            this.Items.Add(new MeterageViewModel() { Timestamp = 14, Status = 1, Level = 7.32, Precipitation = 22 });
-            this.Items.Add(new MeterageViewModel() { Timestamp = 15, Status = 1, Level = 7.32, Precipitation = 22 });
+            if (!IsDataLoaded)
+            {
+                Items.Clear();
+                WebClient webClient = new WebClient();
+                webClient.Headers["Accept"] = "application/json";
+                webClient.DownloadStringCompleted += new DownloadStringCompletedEventHandler(webClient_DownloadCatalogCompleted);
+                webClient.DownloadStringAsync(new Uri(apiUrl));
+            }
+        }
 
-            this.IsDataLoaded = true;
+        private void webClient_DownloadCatalogCompleted(object sender, DownloadStringCompletedEventArgs e)
+        {
+            try
+            {
+                this.Items.Clear();
+                if (e.Result != null)
+                {
+                    var meterages = JsonConvert.DeserializeObject<Meterage[]>(e.Result);
+                    int id = 0;
+                    foreach (Meterage meterage in meterages)
+                    {
+                        this.Items.Add(new MeterageViewModel()
+                        {
+                            Timestamp = meterage.timestamp,
+                            Status = meterage.status,
+                            Level = meterage.level,
+                            Precipitation = meterage.precipitation
+                        });
+                    }
+                    this.IsDataLoaded = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                // TODO: Handle exception
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

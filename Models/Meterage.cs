@@ -4,9 +4,9 @@ namespace MetragemRio.Models
 {
     class Meterage
     {
-        public DateTime timestamp { get; set; }
-        public Int32 status { get; set; }
-        public Double level { get; set; }
-        public Double precipitation { get; set; }
+        public double timestamp { get; set; }
+        public int status { get; set; }
+        public double level { get; set; }
+        public double precipitation { get; set; }
     }
 }

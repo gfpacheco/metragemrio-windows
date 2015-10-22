@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MetragemRio.Utils;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Net;
@@ -12,12 +13,8 @@ namespace MetragemRio.ViewModels
 {
     public class MeterageViewModel : INotifyPropertyChanged
     {
-        private Int32 _timestamp;
-        /// <summary>
-        /// Sample ViewModel property; this property is used to identify the object.
-        /// </summary>
-        /// <returns></returns>
-        public Int32 Timestamp
+        private double _timestamp;
+        public double Timestamp
         {
             get
             {
@@ -29,16 +26,26 @@ namespace MetragemRio.ViewModels
                 {
                     _timestamp = value;
                     NotifyPropertyChanged("Timestamp");
+                    NotifyPropertyChanged("DateTime");
                 }
             }
         }
+        public DateTime Date
+        {
+            get
+            {
+                return DateUtils.UnixTimeStampToDateTime(_timestamp);
+            }
+            set
+            {
+                _timestamp = DateUtils.DateTimeToUnixTimeStamp(value);
+                NotifyPropertyChanged("Timestamp");
+                NotifyPropertyChanged("DateTime");
+            }
+        }
 
-        private Int32 _status;
-        /// <summary>
-        /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
-        /// </summary>
-        /// <returns></returns>
-        public Int32 Status
+        private int _status;
+        public int Status
         {
             get
             {
@@ -54,12 +61,8 @@ namespace MetragemRio.ViewModels
             }
         }
 
-        private Double _level;
-        /// <summary>
-        /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
-        /// </summary>
-        /// <returns></returns>
-        public Double Level
+        private double _level;
+        public double Level
         {
             get
             {
@@ -75,12 +78,8 @@ namespace MetragemRio.ViewModels
             }
         }
 
-        private Double _precipitation;
-        /// <summary>
-        /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
-        /// </summary>
-        /// <returns></returns>
-        public Double Precipitation
+        private double _precipitation;
+        public double Precipitation
         {
             get
             {
