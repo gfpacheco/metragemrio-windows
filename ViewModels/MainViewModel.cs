@@ -25,10 +25,21 @@ namespace MetragemRio.ViewModels
         /// </summary>
         public ObservableCollection<MeterageViewModel> Meterages { get; private set; }
 
-        public bool IsDataLoaded
+        private bool _isLoading = false;
+        public bool IsLoading
         {
-            get;
-            private set;
+            get
+            {
+                return _isLoading;
+            }
+            private set
+            {
+                if (value != _isLoading)
+                {
+                    _isLoading = value;
+                    NotifyPropertyChanged("IsLoading");
+                }
+            }
         }
 
         /// <summary>
@@ -36,9 +47,10 @@ namespace MetragemRio.ViewModels
         /// </summary>
         public void LoadData()
         {
-            if (!IsDataLoaded)
+            if (!IsLoading)
             {
-                Meterages.Clear();
+                this.IsLoading = true;
+                this.Meterages.Clear();
                 WebClient webClient = new WebClient();
                 webClient.Headers["Accept"] = "application/json";
                 webClient.DownloadStringCompleted += new DownloadStringCompletedEventHandler(webClient_DownloadCatalogCompleted);
@@ -48,11 +60,12 @@ namespace MetragemRio.ViewModels
 
         public MeterageViewModel getMeterageFromTimestamp(int timestamp)
         {
-            return Meterages.Single(ViewModels => ViewModels.Timestamp == timestamp);
+            return this.Meterages.Single(ViewModels => ViewModels.Timestamp == timestamp);
         }
 
         private void webClient_DownloadCatalogCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
+            this.IsLoading = false;
             try
             {
                 this.Meterages.Clear();
@@ -69,7 +82,6 @@ namespace MetragemRio.ViewModels
                             Level = meterage.level
                         });
                     }
-                    this.IsDataLoaded = true;
                 }
             }
             catch (Exception ex)
