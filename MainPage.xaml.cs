@@ -9,6 +9,8 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using MetragemRio.Resources;
 using MetragemRio.ViewModels;
+using System.Windows.Markup;
+using System.Threading;
 
 namespace MetragemRio
 {
@@ -17,6 +19,7 @@ namespace MetragemRio
         // Constructor
         public MainPage()
         {
+            this.Language = XmlLanguage.GetLanguage(Thread.CurrentThread.CurrentCulture.Name);
             InitializeComponent();
 
             // Set the data context of the LongListSelector control to the sample data

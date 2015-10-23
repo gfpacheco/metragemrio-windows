@@ -8,6 +8,8 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using MetragemRio.Resources;
+using System.Windows.Markup;
+using System.Threading;
 
 namespace MetragemRio
 {
@@ -16,6 +18,7 @@ namespace MetragemRio
         // Constructor
         public DetailsPage()
         {
+            this.Language = XmlLanguage.GetLanguage(Thread.CurrentThread.CurrentCulture.Name);
             InitializeComponent();
 
             // Sample code to localize the ApplicationBar

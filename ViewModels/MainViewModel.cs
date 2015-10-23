@@ -17,6 +17,7 @@ namespace MetragemRio.ViewModels
         public MainViewModel()
         {
             this.Meterages = new ObservableCollection<MeterageViewModel>();
+            this.Meterages.OrderByDescending(meterage => meterage.Timestamp);
         }
 
         /// <summary>
