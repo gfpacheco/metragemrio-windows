@@ -44,8 +44,8 @@ namespace MetragemRio.ViewModels
             }
         }
 
-        private int _status;
-        public int Status
+        private string _status;
+        public string Status
         {
             get
             {
@@ -74,23 +74,6 @@ namespace MetragemRio.ViewModels
                 {
                     _level = value;
                     NotifyPropertyChanged("Level");
-                }
-            }
-        }
-
-        private double _precipitation;
-        public double Precipitation
-        {
-            get
-            {
-                return _precipitation;
-            }
-            set
-            {
-                if (value != _precipitation)
-                {
-                    _precipitation = value;
-                    NotifyPropertyChanged("Precipitation");
                 }
             }
         }

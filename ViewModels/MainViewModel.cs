@@ -12,7 +12,7 @@ namespace MetragemRio.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {
-        const string apiUrl = @"http://159.203.79.42:5001/cities/7329/meterages";
+        const string apiUrl = @"http://54.232.230.246:5001/";
 
         public MainViewModel()
         {
@@ -66,8 +66,7 @@ namespace MetragemRio.ViewModels
                         {
                             Timestamp = meterage.timestamp,
                             Status = meterage.status,
-                            Level = meterage.level,
-                            Precipitation = meterage.precipitation
+                            Level = meterage.level
                         });
                     }
                     this.IsDataLoaded = true;
