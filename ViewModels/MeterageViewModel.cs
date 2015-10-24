@@ -1,13 +1,6 @@
 ﻿using MetragemRio.Utils;
 using System;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
 
 namespace MetragemRio.ViewModels
 {
@@ -74,6 +67,40 @@ namespace MetragemRio.ViewModels
                 {
                     _level = value;
                     NotifyPropertyChanged("Level");
+                }
+            }
+        }
+
+        private DamViewModel _taioDam;
+        public DamViewModel TaioDam
+        {
+            get
+            {
+                return _taioDam;
+            }
+            set
+            {
+                if (value != _taioDam)
+                {
+                    _taioDam = value;
+                    NotifyPropertyChanged("TaioDam");
+                }
+            }
+        }
+
+        private DamViewModel _ituDam;
+        public DamViewModel ItuDam
+        {
+            get
+            {
+                return _ituDam;
+            }
+            set
+            {
+                if (value != _ituDam)
+                {
+                    _ituDam = value;
+                    NotifyPropertyChanged("ItuDam");
                 }
             }
         }

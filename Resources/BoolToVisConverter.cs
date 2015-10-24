@@ -5,7 +5,7 @@ using System.Windows.Data;
 
 namespace MetragemRio.Resources
 {
-    public class BooleanToVisibilityConverter : IValueConverter
+    public class BoolToVisConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

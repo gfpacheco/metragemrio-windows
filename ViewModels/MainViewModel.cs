@@ -84,15 +84,38 @@ namespace MetragemRio.ViewModels
                 if (e.Result != null)
                 {
                     var meterages = JsonConvert.DeserializeObject<Meterage[]>(e.Result);
-                    int id = 0;
                     foreach (Meterage meterage in meterages)
                     {
-                        this.Meterages.Add(new MeterageViewModel()
+                        MeterageViewModel viewModel = new MeterageViewModel()
                         {
                             Timestamp = meterage.timestamp,
                             Status = meterage.status,
                             Level = meterage.level
-                        });
+                        };
+
+                        if (meterage.dams.taio != null)
+                        {
+                            viewModel.TaioDam = new DamViewModel()
+                            {
+                                Name = "Taió",
+                                Capacity = meterage.dams.taio.capacity,
+                                Open = meterage.dams.taio.open,
+                                Closed = meterage.dams.taio.closed
+                            };
+                        }
+
+                        if (meterage.dams.itu != null)
+                        {
+                            viewModel.ItuDam = new DamViewModel()
+                            {
+                                Name = "Itu",
+                                Capacity = meterage.dams.itu.capacity,
+                                Open = meterage.dams.itu.open,
+                                Closed = meterage.dams.itu.closed
+                            };
+                        }
+
+                        this.Meterages.Add(viewModel);
                     }
                 }
             }
