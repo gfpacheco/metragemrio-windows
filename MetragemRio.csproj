@@ -107,6 +107,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\BooleanToVisibilityConverter.cs" />
     <Compile Include="Utils\DateUtils.cs" />
     <Compile Include="ViewModels\MeterageViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />

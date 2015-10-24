@@ -52,6 +52,11 @@ namespace MetragemRio
             MainLongListSelector.SelectedItem = null;
         }
 
+        private void ErrorTextBlock_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            App.ViewModel.LoadData();
+        }
+
         // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()
         //{

@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:resources="clr-namespace:MetragemRio.Resources"
     mc:Ignorable="d"
     d:DataContext="{d:DesignData SampleData/MainViewModelSampleData.xaml}"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
@@ -14,6 +15,10 @@
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
 
+    <phone:PhoneApplicationPage.Resources>
+        <resources:BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </phone:PhoneApplicationPage.Resources>
+    
     <shell:SystemTray.ProgressIndicator>
         <shell:ProgressIndicator IsIndeterminate="True" Text="Carregando dados" IsVisible="{Binding IsLoading}" />
     </shell:SystemTray.ProgressIndicator>
@@ -62,6 +67,7 @@
                     </DataTemplate>
                 </phone:LongListSelector.ItemTemplate>
             </phone:LongListSelector>
+            <TextBlock Text="Não conseguimos carregar os dados. Confira sua conexão com a internet e clique aqui para tentar novamente." TextWrapping="Wrap" Margin="9,0,0,0" Tap="ErrorTextBlock_Tap" Visibility="{Binding Path=HasError, Converter={StaticResource BoolToVis}}"/>
         </Grid>
 
         <!--Uncomment to see an alignment grid to help ensure your controls are

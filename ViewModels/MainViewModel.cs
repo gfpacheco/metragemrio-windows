@@ -20,9 +20,6 @@ namespace MetragemRio.ViewModels
             this.Meterages.OrderByDescending(meterage => meterage.Timestamp);
         }
 
-        /// <summary>
-        /// A collection for ItemViewModel objects.
-        /// </summary>
         public ObservableCollection<MeterageViewModel> Meterages { get; private set; }
 
         private bool _isLoading = false;
@@ -42,12 +39,27 @@ namespace MetragemRio.ViewModels
             }
         }
 
-        /// <summary>
-        /// Creates and adds a few ItemViewModel objects into the Items collection.
-        /// </summary>
+        private bool _hasError = false;
+        public bool HasError
+        {
+            get
+            {
+                return _hasError;
+            }
+            private set
+            {
+                if (value != _hasError)
+                {
+                    _hasError = value;
+                    NotifyPropertyChanged("HasError");
+                }
+            }
+        }
+
         public void LoadData()
         {
-            if (!IsLoading)
+            this.HasError = false;
+            if (!this.IsLoading)
             {
                 this.IsLoading = true;
                 this.Meterages.Clear();
@@ -87,7 +99,7 @@ namespace MetragemRio.ViewModels
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                // TODO: Handle exception
+                HasError = true;
             }
         }
 
