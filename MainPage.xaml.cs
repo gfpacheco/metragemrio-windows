@@ -32,7 +32,7 @@ namespace MetragemRio
         // Load data for the ViewModel Items
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (!App.ViewModel.IsLoading)
+            if (e.NavigationMode != NavigationMode.Back && !App.ViewModel.IsLoading)
             {
                 App.ViewModel.LoadData();
             }
