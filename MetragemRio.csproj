@@ -150,6 +150,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Assets\AppBarIcons\Refresh.png" />
     <Content Include="Assets\ApplicationIcon.png" />
     <Content Include="Assets\Tiles\FlipCycleTileMedium.png" />
     <Content Include="Assets\Tiles\FlipCycleTileSmall.png" />

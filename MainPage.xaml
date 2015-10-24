@@ -56,7 +56,7 @@
 
         <!--ContentPanel contains LongListSelector and LongListSelector ItemTemplate. Place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <TextBlock Text="Não conseguimos carregar os dados. Confira sua conexão com a internet e clique aqui para tentar novamente." TextWrapping="Wrap" Margin="9,0,0,0" Tap="ErrorTextBlock_Tap" Visibility="{Binding Path=HasError, Converter={StaticResource BoolToVis}}"/>
+            <TextBlock Text="Não conseguimos carregar os dados. Confira sua conexão com a internet e tente novamente." TextWrapping="Wrap" Margin="9,0,0,0" Visibility="{Binding Path=HasError, Converter={StaticResource BoolToVis}}"/>
             <phone:LongListSelector x:Name="MainLongListSelector" Margin="0,0,-12,0" ItemsSource="{Binding Meterages}" SelectionChanged="MainLongListSelector_SelectionChanged">
                 <phone:LongListSelector.ItemTemplate>
                     <DataTemplate>
@@ -77,5 +77,11 @@
             Before shipping remove this XAML and the image itself.-->
         <!--<Image Source="/Assets/AlignmentGrid.png" VerticalAlignment="Top" Height="800" Width="480" Margin="0,-32,0,0" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" />-->
     </Grid>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True">
+            <shell:ApplicationBarIconButton Click="RefreshButton_Click" IconUri="/Assets/AppBarIcons/Refresh.png" Text="Atualizar"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
 
 </phone:PhoneApplicationPage>

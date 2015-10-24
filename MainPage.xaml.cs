@@ -52,7 +52,7 @@ namespace MetragemRio
             MainLongListSelector.SelectedItem = null;
         }
 
-        private void ErrorTextBlock_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        private void RefreshButton_Click(object sender, EventArgs e)
         {
             App.ViewModel.LoadData();
         }
