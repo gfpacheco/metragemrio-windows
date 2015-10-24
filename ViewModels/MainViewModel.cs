@@ -97,7 +97,7 @@ namespace MetragemRio.ViewModels
                         {
                             viewModel.TaioDam = new DamViewModel()
                             {
-                                Name = "Taió",
+                                Name = "Barragem Taió",
                                 Capacity = meterage.dams.taio.capacity,
                                 Open = meterage.dams.taio.open,
                                 Closed = meterage.dams.taio.closed
@@ -108,7 +108,7 @@ namespace MetragemRio.ViewModels
                         {
                             viewModel.ItuDam = new DamViewModel()
                             {
-                                Name = "Itu",
+                                Name = "Barragem Ituporanga",
                                 Capacity = meterage.dams.itu.capacity,
                                 Open = meterage.dams.itu.open,
                                 Closed = meterage.dams.itu.closed
