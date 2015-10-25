@@ -57,6 +57,11 @@ namespace MetragemRio
             App.ViewModel.LoadData();
         }
 
+        private void PushConfiguration_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/SettingsPage.xaml", UriKind.Relative));
+        }
+
         // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()
         //{

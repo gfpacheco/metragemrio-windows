@@ -8,6 +8,8 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using MetragemRio.Resources;
 using MetragemRio.ViewModels;
+using Parse;
+using System.Collections.Generic;
 
 namespace MetragemRio
 {
@@ -36,6 +38,20 @@ namespace MetragemRio
         /// </summary>
         /// <returns>The root frame of the Phone Application.</returns>
         public static PhoneApplicationFrame RootFrame { get; private set; }
+
+        public static void unsubscribe()
+        {
+            ParseInstallation installation = ParseInstallation.CurrentInstallation;
+            installation.Channels = new List<string>();
+            installation.SaveAsync();
+        }
+
+        public static void subscribeForLevel(int level)
+        {
+            ParseInstallation installation = ParseInstallation.CurrentInstallation;
+            installation.Channels = new List<string> { "level_" + level };
+            installation.SaveAsync();
+        }
 
         /// <summary>
         /// Constructor for the Application object.
@@ -73,6 +89,14 @@ namespace MetragemRio
                 // and consume battery power when the user is not using the phone.
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
+
+            // Initialize Parse
+            ParseClient.Initialize("BClDmah0fedSTqGmshb4UaCf5JZhkQ8LmTWuDow3", "0E1bRr9vLLqfRoA2J0Ri0gKe3EOCwrLh9n8nWyXt");
+
+            this.Startup += (sender, args) => {
+                // This line tracks statistics around app opens, including push effectiveness:
+                ParseAnalytics.TrackAppOpens(RootFrame);
+            };
         }
 
         // Code to execute when the application is launching (eg, from Start)
