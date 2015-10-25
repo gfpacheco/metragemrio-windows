@@ -4,7 +4,7 @@
   <Languages xmlns="">
     <Language code="pt-BR" />
   </Languages>
-  <App xmlns="" ProductID="{151c3c25-24c0-4075-8383-ef6c86105a2e}" Title="Metragem Rio Itajaí-Açu" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Guilherme Pacheco" Description="Rio do Sul/SC é uma cidade com riscos de enchente, e com o intuito de auxiliar e informar a respeito da metragem do Rio Itajaí-Açu, este aplicativo oferece os dados colhidos pela Defesa Civil, mostrando o nível do rio e os dados das barragens da região." Publisher="Guilherme Pacheco" PublisherID="{a76cd5ae-428d-4fd6-8486-bc6e91251376}">
+  <App xmlns="" ProductID="{151c3c25-24c0-4075-8383-ef6c86105a2e}" Title="Metragem Rio" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Guilherme Pacheco" Description="Rio do Sul/SC é uma cidade com riscos de enchente, e com o intuito de auxiliar e informar a respeito da metragem do Rio Itajaí-Açu, este aplicativo oferece os dados colhidos pela Defesa Civil, mostrando o nível do rio e os dados das barragens da região." Publisher="Guilherme Pacheco" PublisherID="{a76cd5ae-428d-4fd6-8486-bc6e91251376}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
